@@ -1,0 +1,537 @@
+conv1 Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+layer1.0.conv1 Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+layer1.0.conv2 Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+layer1.1.conv1 Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+layer1.1.conv2 Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+layer2.0.conv1 Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+layer2.0.conv2 Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+layer2.0.downsample.0 Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+layer2.1.conv1 Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+layer2.1.conv2 Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+layer3.0.conv1 Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+layer3.0.conv2 Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+layer3.0.downsample.0 Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+layer3.1.conv1 Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+layer3.1.conv2 Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+layer4.0.conv1 Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+layer4.0.conv2 Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+layer4.0.downsample.0 Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+layer4.1.conv1 Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+layer4.1.conv2 Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+fc Linear(in_features=512, out_features=1000, bias=True)
+ResNet(
+  (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+  (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (layer4): Sequential(
+    (0): BasicBlock(
+      (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (downsample): Sequential(
+        (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+        (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      )
+    )
+    (1): BasicBlock(
+      (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace=True)
+      (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+  (fc): Linear(in_features=512, out_features=1000, bias=True)
+)
+Sequential(
+  (0): BasicBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (1): BasicBlock(
+    (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+)
+BasicBlock(
+  (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+)
+BasicBlock(
+  (conv1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+)
+Sequential(
+  (0): BasicBlock(
+    (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (downsample): Sequential(
+      (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (1): BasicBlock(
+    (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+)
+BasicBlock(
+  (conv1): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+  (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (downsample): Sequential(
+    (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+    (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+)
+Sequential(
+  (0): Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+  (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+)
+BasicBlock(
+  (conv1): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+)
+Sequential(
+  (0): BasicBlock(
+    (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (downsample): Sequential(
+      (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (1): BasicBlock(
+    (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+)
+BasicBlock(
+  (conv1): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+  (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (downsample): Sequential(
+    (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+    (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+)
+Sequential(
+  (0): Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+  (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+)
+BasicBlock(
+  (conv1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+)
+Sequential(
+  (0): BasicBlock(
+    (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+    (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (downsample): Sequential(
+      (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (1): BasicBlock(
+    (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+)
+BasicBlock(
+  (conv1): Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+  (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (downsample): Sequential(
+    (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+    (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+)
+Sequential(
+  (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+  (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+)
+BasicBlock(
+  (conv1): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace=True)
+  (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+)
+Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+Conv2d(64, 128, kernel_size=(1, 1), stride=(2, 2), bias=False)
+Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+Conv2d(128, 256, kernel_size=(1, 1), stride=(2, 2), bias=False)
+Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+Conv2d(256, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+Linear(in_features=512, out_features=1000, bias=True)
+21 21 21 21 21
+21
+
+ === Layer 0 : conv1 ===
+torch.Size([3, 224, 224])
+torch.Size([147, 11881])
+torch.Size([743, 16, 147])
+> step0: Inp | [743, 1, 16, 147]
+> step1: torch.Size([64, 147]) 1
+> step2: torch.Size([4, 16, 147])
+> step3: Wgt | [[[16, 147]], [[16, 147]], [[16, 147]], [[16, 147]]]
+>>> Packed: 588 to 588
+[743, 1, 16, 147] 4 1 [[16, 147]]
+457851.0 ->  0.20717239819004526 ms
+
+ === Layer 1 : layer1.0.conv1 ===
+torch.Size([64, 56, 56])
+torch.Size([576, 2916])
+torch.Size([183, 16, 576])
+> step0: Inp | [183, 1, 16, 576]
+> step1: torch.Size([64, 576]) 1
+> step2: torch.Size([4, 16, 576])
+> step3: Wgt | [[[16, 576]], [[16, 576]], [[16, 576]], [[16, 576]]]
+>>> Packed: 2304 to 2304
+[183, 1, 16, 576] 4 1 [[16, 576]]
+427348.0 ->  0.19337013574660636 ms
+
+ === Layer 2 : layer1.0.conv2 ===
+torch.Size([64, 56, 56])
+torch.Size([576, 2916])
+torch.Size([183, 16, 576])
+> step0: Inp | [183, 1, 16, 576]
+> step1: torch.Size([64, 576]) 1
+> step2: torch.Size([4, 16, 576])
+> step3: Wgt | [[[16, 576]], [[16, 576]], [[16, 576]], [[16, 576]]]
+>>> Packed: 2304 to 2304
+[183, 1, 16, 576] 4 1 [[16, 576]]
+427348.0 ->  0.19337013574660636 ms
+
+ === Layer 3 : layer1.1.conv1 ===
+torch.Size([64, 56, 56])
+torch.Size([576, 2916])
+torch.Size([183, 16, 576])
+> step0: Inp | [183, 1, 16, 576]
+> step1: torch.Size([64, 576]) 1
+> step2: torch.Size([4, 16, 576])
+> step3: Wgt | [[[16, 576]], [[16, 576]], [[16, 576]], [[16, 576]]]
+>>> Packed: 2304 to 2304
+[183, 1, 16, 576] 4 1 [[16, 576]]
+427348.0 ->  0.19337013574660636 ms
+
+ === Layer 4 : layer1.1.conv2 ===
+torch.Size([64, 56, 56])
+torch.Size([576, 2916])
+torch.Size([183, 16, 576])
+> step0: Inp | [183, 1, 16, 576]
+> step1: torch.Size([64, 576]) 1
+> step2: torch.Size([4, 16, 576])
+> step3: Wgt | [[[16, 576]], [[16, 576]], [[16, 576]], [[16, 576]]]
+>>> Packed: 2304 to 2304
+[183, 1, 16, 576] 4 1 [[16, 576]]
+427348.0 ->  0.19337013574660636 ms
+
+ === Layer 5 : layer2.0.conv1 ===
+torch.Size([64, 56, 56])
+torch.Size([576, 729])
+torch.Size([46, 16, 576])
+> step0: Inp | [46, 1, 16, 576]
+> step1: torch.Size([128, 576]) 1
+> step2: torch.Size([8, 16, 576])
+> step3: Wgt | [[[16, 576]], [[16, 576]], [[16, 576]], [[16, 576]], [[16, 576]], [[16, 576]], [[16, 576]], [[16, 576]]]
+>>> Packed: 4608 to 4608
+[46, 1, 16, 576] 8 1 [[16, 576]]
+215136.0 ->  0.09734660633484163 ms
+
+ === Layer 6 : layer2.0.conv2 ===
+torch.Size([128, 28, 28])
+torch.Size([1152, 676])
+torch.Size([43, 16, 1152])
+> step0: Inp | [43, 2, 16, 1024]
+> step1: torch.Size([128, 1152]) 1
+> step2: torch.Size([8, 16, 1152])
+> step3: Wgt | [[[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]]]
+>>> Packed: 9216 to 8192
+[43, 2, 16, 1024] 8 2 [[16, 1024], [16, 128]]
+707071.0 ->  0.319941628959276 ms
+
+ === Layer 7 : layer2.0.downsample.0 ===
+torch.Size([64, 56, 56])
+torch.Size([64, 784])
+torch.Size([49, 16, 64])
+> step0: Inp | [49, 1, 16, 64]
+> step1: torch.Size([128, 64]) 1
+> step2: torch.Size([8, 16, 64])
+> step3: Wgt | [[[16, 64]], [[16, 64]], [[16, 64]], [[16, 64]], [[16, 64]], [[16, 64]], [[16, 64]], [[16, 64]]]
+>>> Packed: 512 to 512
+[49, 1, 16, 64] 8 1 [[16, 64]]
+27912.0 ->  0.012629864253393666 ms
+
+ === Layer 8 : layer2.1.conv1 ===
+torch.Size([128, 28, 28])
+torch.Size([1152, 676])
+torch.Size([43, 16, 1152])
+> step0: Inp | [43, 2, 16, 1024]
+> step1: torch.Size([128, 1152]) 1
+> step2: torch.Size([8, 16, 1152])
+> step3: Wgt | [[[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]]]
+>>> Packed: 9216 to 8192
+[43, 2, 16, 1024] 8 2 [[16, 1024], [16, 128]]
+707071.0 ->  0.319941628959276 ms
+
+ === Layer 9 : layer2.1.conv2 ===
+torch.Size([128, 28, 28])
+torch.Size([1152, 676])
+torch.Size([43, 16, 1152])
+> step0: Inp | [43, 2, 16, 1024]
+> step1: torch.Size([128, 1152]) 1
+> step2: torch.Size([8, 16, 1152])
+> step3: Wgt | [[[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]]]
+>>> Packed: 9216 to 8192
+[43, 2, 16, 1024] 8 2 [[16, 1024], [16, 128]]
+707071.0 ->  0.319941628959276 ms
+
+ === Layer 10 : layer3.0.conv1 ===
+torch.Size([128, 28, 28])
+torch.Size([1152, 169])
+torch.Size([11, 16, 1152])
+> step0: Inp | [11, 2, 16, 1024]
+> step1: torch.Size([256, 1152]) 1
+> step2: torch.Size([16, 16, 1152])
+> step3: Wgt | [[[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]], [[16, 1024], [16, 128]]]
+>>> Packed: 18432 to 16384
+[11, 2, 16, 1024] 16 2 [[16, 1024], [16, 128]]
+361831.0 ->  0.16372443438914028 ms
+
+ === Layer 11 : layer3.0.conv2 ===
+torch.Size([256, 14, 14])
+torch.Size([2304, 144])
+torch.Size([9, 16, 2304])
+> step0: Inp | [9, 3, 16, 1024]
+> step1: torch.Size([256, 2304]) 1
+> step2: torch.Size([16, 16, 2304])
+> step3: Wgt | [[[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]]]
+>>> Packed: 36864 to 16384
+[9, 3, 16, 1024] 16 3 [[16, 1024], [16, 1024], [16, 256]]
+444663.0 ->  0.2012049773755656 ms
+
+ === Layer 12 : layer3.0.downsample.0 ===
+torch.Size([128, 28, 28])
+torch.Size([128, 196])
+torch.Size([13, 16, 128])
+> step0: Inp | [13, 1, 16, 128]
+> step1: torch.Size([256, 128]) 1
+> step2: torch.Size([16, 16, 128])
+> step3: Wgt | [[[16, 128]], [[16, 128]], [[16, 128]], [[16, 128]], [[16, 128]], [[16, 128]], [[16, 128]], [[16, 128]], [[16, 128]], [[16, 128]], [[16, 128]], [[16, 128]], [[16, 128]], [[16, 128]], [[16, 128]], [[16, 128]]]
+>>> Packed: 2048 to 2048
+[13, 1, 16, 128] 16 1 [[16, 128]]
+28224.0 ->  0.012771040723981901 ms
+
+ === Layer 13 : layer3.1.conv1 ===
+torch.Size([256, 14, 14])
+torch.Size([2304, 144])
+torch.Size([9, 16, 2304])
+> step0: Inp | [9, 3, 16, 1024]
+> step1: torch.Size([256, 2304]) 1
+> step2: torch.Size([16, 16, 2304])
+> step3: Wgt | [[[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]]]
+>>> Packed: 36864 to 16384
+[9, 3, 16, 1024] 16 3 [[16, 1024], [16, 1024], [16, 256]]
+444663.0 ->  0.2012049773755656 ms
+
+ === Layer 14 : layer3.1.conv2 ===
+torch.Size([256, 14, 14])
+torch.Size([2304, 144])
+torch.Size([9, 16, 2304])
+> step0: Inp | [9, 3, 16, 1024]
+> step1: torch.Size([256, 2304]) 1
+> step2: torch.Size([16, 16, 2304])
+> step3: Wgt | [[[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]]]
+>>> Packed: 36864 to 16384
+[9, 3, 16, 1024] 16 3 [[16, 1024], [16, 1024], [16, 256]]
+444663.0 ->  0.2012049773755656 ms
+
+ === Layer 15 : layer4.0.conv1 ===
+torch.Size([256, 14, 14])
+torch.Size([2304, 36])
+torch.Size([3, 16, 2304])
+> step0: Inp | [3, 3, 16, 1024]
+> step1: torch.Size([512, 2304]) 1
+> step2: torch.Size([32, 16, 2304])
+> step3: Wgt | [[[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]], [[16, 1024], [16, 1024], [16, 256]]]
+>>> Packed: 73728 to 32768
+[3, 3, 16, 1024] 32 3 [[16, 1024], [16, 1024], [16, 256]]
+296535.0 ->  0.1341787330316742 ms
+
+ === Layer 16 : layer4.0.conv2 ===
+torch.Size([512, 7, 7])
+torch.Size([4608, 25])
+torch.Size([2, 16, 4608])
+> step0: Inp | [2, 5, 16, 1024]
+> step1: torch.Size([512, 4608]) 1
+> step2: torch.Size([32, 16, 4608])
+> step3: Wgt | [[[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]]]
+>>> Packed: 147456 to 32768
+[2, 5, 16, 1024] 32 5 [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]]
+330007.0 ->  0.14932443438914028 ms
+
+ === Layer 17 : layer4.0.downsample.0 ===
+torch.Size([256, 14, 14])
+torch.Size([256, 49])
+torch.Size([4, 16, 256])
+> step0: Inp | [4, 1, 16, 256]
+> step1: torch.Size([512, 256]) 1
+> step2: torch.Size([32, 16, 256])
+> step3: Wgt | [[[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]], [[16, 256]]]
+>>> Packed: 8192 to 8192
+[4, 1, 16, 256] 32 1 [[16, 256]]
+33936.0 ->  0.015355656108597286 ms
+
+ === Layer 18 : layer4.1.conv1 ===
+torch.Size([512, 7, 7])
+torch.Size([4608, 25])
+torch.Size([2, 16, 4608])
+> step0: Inp | [2, 5, 16, 1024]
+> step1: torch.Size([512, 4608]) 1
+> step2: torch.Size([32, 16, 4608])
+> step3: Wgt | [[[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]]]
+>>> Packed: 147456 to 32768
+[2, 5, 16, 1024] 32 5 [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]]
+330007.0 ->  0.14932443438914028 ms
+
+ === Layer 19 : layer4.1.conv2 ===
+torch.Size([512, 7, 7])
+torch.Size([4608, 25])
+torch.Size([2, 16, 4608])
+> step0: Inp | [2, 5, 16, 1024]
+> step1: torch.Size([512, 4608]) 1
+> step2: torch.Size([32, 16, 4608])
+> step3: Wgt | [[[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]], [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]]]
+>>> Packed: 147456 to 32768
+[2, 5, 16, 1024] 32 5 [[16, 1024], [16, 1024], [16, 1024], [16, 1024], [16, 512]]
+330007.0 ->  0.14932443438914028 ms
+
+ === Layer 20 : fc ===
+torch.Size([512])
+torch.Size([512, 1])
+torch.Size([1, 16, 512])
+> step0: Inp | [1, 1, 16, 512]
+> step1: torch.Size([1000, 512]) 1
+> step2: torch.Size([63, 16, 512])
+> step3: Wgt | [[[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]], [[16, 512]]]
+>>> Packed: 32256 to 32256
+[1, 1, 16, 512] 63 1 [[16, 512]]
+33225.0 ->  0.015033936651583712 ms
+The overall latecy is: 3.4431063348416293
