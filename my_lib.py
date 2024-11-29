@@ -7,7 +7,7 @@ import random
 import math
 from collections import Counter
 #vit = tm.create_model('vit_base_patch16_224', pretrained=True)
-
+#...
 ##control##
 def counting(matrix):
     nonzero = 0
