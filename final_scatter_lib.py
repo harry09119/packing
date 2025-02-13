@@ -307,6 +307,133 @@ def pruned_column_scatter_nop(matrix, max_cols, max_conflict, group_len):
     
     return torch.tensor(packed_matrix), result, not_used, pruned, cols_mux
 
+import torch
+
+def optimized_column_scatter(matrix, max_cols, max_conflict, group_len):
+    """
+    Optimized Dense Column Scattering (DCS)
+    - matrix: Sparse input matrix
+    - max_cols: Maximum number of secondary columns per group
+    - max_conflict: Maximum allowed conflict ratio
+    - group_len: Group lengths per column
+    """
+
+    # 1. Precompute nonzero counts per column
+    col_nonz = torch.sum(matrix >= 0, dim=1).tolist()
+
+    # 2. Sort columns by nonzero count
+    sorted_indices = sorted(range(len(col_nonz)), key=lambda i: col_nonz[i], reverse=True)
+    d_list = [i for i in sorted_indices if col_nonz[i] > 0]
+    s_list = [i for i in sorted_indices if col_nonz[i] > 0][::-1]  # Reverse order for secondary columns
+
+    used = set()
+    result = []
+    pruned = set()
+
+    for d_ci in d_list:
+        if d_ci in used:
+            continue
+
+        d_col = matrix[d_ci].clone()
+        d_nonz = torch.where(d_col >= 0)[0].tolist()
+
+        if not d_nonz:
+            continue
+
+        slot = set()
+        s_group = []
+        s_change = []
+
+        for _ in range(max_cols):
+            need = set(d_nonz) - slot
+            if not need:
+                break
+
+            if len(need) <= round(matrix.shape[1] * max_conflict) and len(d_nonz) > round(matrix.shape[1] * max_conflict) and s_group:
+                # Prune remaining nonzeros in d_col
+                for ri in need:
+                    d_col[ri] = -1
+                    slot.add(ri)
+                    pruned.add((d_ci, ri))
+                break
+
+            # Find best s_col to cover need
+            best_s_col, best_match = None, []
+            min_conflict = float('inf')
+
+            for s_ci in s_list:
+                if s_ci in used or s_ci == d_ci or s_ci in s_group:
+                    continue
+
+                s_col = matrix[s_ci].clone()
+                zero_positions = set(torch.where(s_col < 0)[0].tolist())
+                match = zero_positions & need
+
+                if match:
+                    conflict = len(zero_positions & slot)
+                    if len(match) > len(best_match) or (len(match) == len(best_match) and conflict < min_conflict):
+                        best_s_col = s_ci
+                        best_match = match
+                        min_conflict = conflict
+
+            if best_s_col is not None:
+                slot.update(best_match)
+                s_group.append(best_s_col)
+                s_change.append(matrix[best_s_col].clone())
+
+        # Verify if the d_col is fully covered
+        if set(d_nonz).issubset(slot):
+            used.add(d_ci)
+            for i, s_ci in enumerate(s_group):
+                matrix[s_ci] = s_change[i]
+                used.add(s_ci)
+
+        result.append([d_ci, s_group])
+
+    # Construct final packed matrix
+    packed_matrix = []
+    not_used = [i for i in range(matrix.shape[0]) if i not in used]
+    cols_mux = []
+
+    for pack in result:
+        sparse_cols = []
+        if pack[1]:
+            slot = set()
+            for i, ci in enumerate(pack[1]):
+                sparse_cols.append(matrix[ci].clone().tolist())
+                cols_mux.append(group_len[pack[0]] + group_len[ci])
+
+                for ri, value in enumerate(matrix[ci]):
+                    if value < 0 and ri not in slot:
+                        slot.add(ri)
+
+            d_col_values = matrix[pack[0]].clone().tolist()
+            block = set(torch.where(matrix[pack[0]] >= 0)[0].tolist())
+
+            if block.issubset(slot):
+                for ri, value in enumerate(d_col_values):
+                    for ci in range(len(sparse_cols)):
+                        if sparse_cols[ci][ri] < 0:
+                            sparse_cols[ci][ri] = value
+                            break
+            else:
+                sparse_cols.append(d_col_values)
+
+        for col in sparse_cols:
+            packed_matrix.append(col)
+
+    for ci in sorted(not_used):
+        packed_matrix.append(matrix[ci].tolist())
+        cols_mux.append(group_len[ci])
+
+    # Reorder result groups
+    result_used = [grp for grp in result if grp[1]]
+    result_new = [grp for grp in result if not grp[1]]
+    result = result_used + sorted(result_new)
+
+    return torch.tensor(packed_matrix), result, not_used, list(pruned), cols_mux
+
+
 def pruned_column_scatter(matrix, max_cols, max_conflict, group_len):
     col_list = [[ci,copy.deepcopy(col)] for ci, col in enumerate(matrix)]
     col_nonz = []
